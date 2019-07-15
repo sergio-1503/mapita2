@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+     <title>Map Search</title>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+     <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+
+     <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
+     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+
+     <script>
+     function GetMap(){
+         var map = new atlas.Map("myMap", {
+    	//Add your Azure Maps subscription key to the map SDK. Get an Azure Maps key at https://azure.com/maps
+	    authOptions: {
+	        authType: 'subscriptionKey',
+	        subscriptionKey: 'VsKX5wcTpZnq8jElj_VtiBsLgn3Oa_Y9WSf9wL8zZao'
+	    }
+		});
+         	map.events.add('ready', function () {
+
+				  //Create a HTML marker and add it to the map.
+				  var marker = new atlas.HtmlMarker({
+				    color: 'DodgerBlue',
+				    text: 'Aqui Pe',
+				    position: [-77.085625, -12.05413],
+				  });-77.085625
+				  
+				  map.markers.add(marker);
+				  
+				  //Add a click event to toggle the popup.
+				  map.events.add('click',marker, () => {
+				    marker.togglePopup();
+				  });
+				});
+
+
+
+     }
+
+     /*var map = new atlas.Map("myMap", {
+    	//Add your Azure Maps subscription key to the map SDK. Get an Azure Maps key at https://azure.com/maps
+	    authOptions: {
+	        authType: 'subscriptionKey',
+	        subscriptionKey: 'VsKX5wcTpZnq8jElj_VtiBsLgn3Oa_Y9WSf9wL8zZao'
+	    }
+		});*/
+    /* function iniciar(){
+     	
+
+		var lltn={lat: -12.05413,lng: -77.085625};
+		var mapOption = {
+			zoom: 11,
+			center: lltn
+		};
+		var mrq= new atlas.Map(document.getElementById('myMap'),mapOption);
+     }
+
+     atlas.Map.event.addDomListener(window,'load',iniciar);*/
+	 
+     </script>
+
+     <style>
+         html,
+         body {
+             width: 100%;
+             height: 100%;
+             padding: 0;
+             margin: 0;
+         }
+
+         #myMap {
+             width: 100%;
+             height: 100%;
+         }
+     </style>
+ </head>
+ <body onload="GetMap()">
+     <div id="myMap"></div>
+ </body>
+ </html>
